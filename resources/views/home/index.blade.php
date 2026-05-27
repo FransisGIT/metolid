@@ -1,8 +1,320 @@
-@extends('app', ['title' => 'Home'])
+@extends('app', ['title' => 'Kuesioner MBG'])
 @section('content')
-    <section class="relative pb-12 overflow-hidden">
-        <div class="container relative z-10 px-4 sm:px-6 lg:px-10">
+    <section class="relative overflow-hidden bg-slate-50 text-slate-900">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.12),transparent_34%),radial-gradient(circle_at_top_right,rgba(250,204,21,0.12),transparent_28%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(241,245,249,1))]">
+        </div>
+        <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl"></div>
+        <div class="absolute -right-20 top-24 h-80 w-80 rounded-full bg-amber-300/10 blur-3xl"></div>
 
+        <div class="container relative z-10 mx-auto px-4 py-10 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+            <div class="mx-auto max-w-4xl">
+                <div class="mb-6 flex items-center gap-3 text-sm text-slate-600">
+                    <span
+                        class="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-medium text-emerald-700">
+                        Kuesioner MBG
+                    </span>
+                    <span class="hidden h-px flex-1 bg-slate-200 sm:block"></span>
+                    <span>Form pendapat tentang Makan Bergizi Gratis</span>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div
+                        class="rounded-4xl border border-slate-200 bg-white/95 p-6 shadow-2xl shadow-slate-200/60 backdrop-blur-xl sm:p-8">
+                        <div class="mb-8">
+                            <p
+                                class="mb-3 inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600">
+                                Survei Singkat
+                            </p>
+                            <h1 class="max-w-2xl text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                                Kuesioner Q&amp;N tentang MBG
+                            </h1>
+                            <p class="mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+                                Berikan jawaban singkat mengenai pengetahuan, manfaat, dan harapan Anda terhadap program
+                                MBG.
+                                Tampilan ini dibuat seperti Google Form: bersih, rapi, dan mudah diisi di ponsel.
+                            </p>
+                        </div>
+
+                        <div class="mb-8 grid gap-3 sm:grid-cols-3">
+                            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Estimasi</p>
+                                <p class="mt-2 text-lg font-semibold text-slate-900">3-5 menit</p>
+                            </div>
+                            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Pertanyaan</p>
+                                <p class="mt-2 text-lg font-semibold text-slate-900">6 item</p>
+                            </div>
+                            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                <p class="text-xs uppercase tracking-[0.2em] text-slate-500">Sifat</p>
+                                <p class="mt-2 text-lg font-semibold text-slate-900">Anonim</p>
+                            </div>
+                        </div>
+
+                        <form method="POST" action="{{ route('questionnaire-responses.store') }}" class="space-y-5">
+                            @csrf
+                            <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6">
+                                <p class="mb-4 text-sm font-medium text-emerald-600">Pertanyaan 1</p>
+                                <h2 class="mb-4 text-xl font-semibold text-slate-900">Anda mengisi kuesioner ini sebagai
+                                    siapa?
+                                </h2>
+
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="respondent_role" value="student"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Siswa / pelajar</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="respondent_role" value="teacher"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Guru / tenaga pendidik</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="respondent_role" value="parent"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Orang tua</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="respondent_role" value="public"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Masyarakat umum</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6">
+                                <p class="mb-4 text-sm font-medium text-emerald-600">Pertanyaan 2</p>
+                                <h2 class="mb-4 text-xl font-semibold text-slate-900">Seberapa familiar Anda dengan program
+                                    MBG?
+                                </h2>
+
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="familiarity" value="very_familiar"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Sangat familiar</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="familiarity" value="heard_of_it"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Pernah mendengar</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="familiarity" value="less_familiar"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Kurang familiar</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="familiarity" value="first_time"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-slate-800">Baru pertama kali tahu</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6">
+                                <p class="mb-4 text-sm font-medium text-emerald-300">Pertanyaan 3</p>
+                                <h2 class="mb-4 text-xl font-semibold text-black">Menurut Anda, apa tujuan utama MBG?</h2>
+
+                                <div class="space-y-3">
+                                    <label
+                                        class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="purpose" value="improve_nutrition"
+                                            class="mt-1 h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Meningkatkan gizi anak dan remaja</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="purpose" value="help_family_economy"
+                                            class="mt-1 h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Membantu ekonomi keluarga</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="purpose" value="improve_learning"
+                                            class="mt-1 h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Menambah kualitas belajar peserta didik</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6">
+                                <p class="mb-4 text-sm font-medium text-emerald-600">Pertanyaan 4</p>
+                                <h2 class="mb-4 text-xl font-semibold text-black">Sumber informasi MBG yang paling sering
+                                    Anda lihat</h2>
+
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-sky-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="information_source" value="social_media"
+                                            class="h-4 w-4 border-slate-500 text-sky-500 focus:ring-sky-400">
+                                        <span class="text-sm text-black">Media sosial</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-sky-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="information_source" value="online_news"
+                                            class="h-4 w-4 border-slate-500 text-sky-500 focus:ring-sky-400">
+                                        <span class="text-sm text-black">Berita online</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-sky-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="information_source" value="school_campus"
+                                            class="h-4 w-4 border-slate-500 text-sky-500 focus:ring-sky-400">
+                                        <span class="text-sm text-black">Sekolah / kampus</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-sky-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="information_source" value="family_friends"
+                                            class="h-4 w-4 border-slate-500 text-sky-500 focus:ring-sky-400">
+                                        <span class="text-sm text-black">Keluarga / teman</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-6">
+                                <p class="mb-4 text-sm font-medium text-emerald-600">Pertanyaan 5</p>
+                                <h2 class="mb-4 text-xl font-semibold text-black">Manfaat MBG yang paling Anda harapkan
+                                    adalah?</h2>
+
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="expected_benefit" value="better_nutrition"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-black">Gizi lebih baik</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="expected_benefit" value="increased_learning"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-black">Semangat belajar meningkat</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="expected_benefit" value="save_family_budget"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-black">Membantu keluarga menghemat biaya</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-emerald-400/40 hover:bg-slate-50">
+                                        <input type="radio" name="expected_benefit" value="equal_access"
+                                            class="h-4 w-4 border-slate-500 text-emerald-500 focus:ring-emerald-400">
+                                        <span class="text-sm text-black">Pemerataan akses makanan sehat</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="rounded-3xl border border-amber-200 bg-amber-50 p-5 sm:p-6">
+                                <p class="mb-4 text-sm font-medium text-amber-700">Pertanyaan 6</p>
+                                <h2 class="mb-4 text-xl font-semibold text-black">Perbaikan yang paling perlu didahulukan
+                                    pada MBG adalah?</h2>
+
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-300/40 hover:bg-slate-50">
+                                        <input type="radio" name="improvement_priority" value="menu_quality"
+                                            class="h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Kualitas menu</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-300/40 hover:bg-slate-50">
+                                        <input type="radio" name="improvement_priority" value="target_accuracy"
+                                            class="h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Ketepatan sasaran penerima</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-300/40 hover:bg-slate-50">
+                                        <input type="radio" name="improvement_priority" value="distribution_time"
+                                            class="h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Waktu distribusi</span>
+                                    </label>
+
+                                    <label
+                                        class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 transition hover:border-amber-300/40 hover:bg-slate-50">
+                                        <input type="radio" name="improvement_priority" value="socialization"
+                                            class="h-4 w-4 border-slate-500 text-amber-500 focus:ring-amber-300">
+                                        <span class="text-sm text-black">Sosialisasi program</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                <p class="text-sm text-slate-600">Jawaban Anda akan digunakan untuk kebutuhan survei dan
+                                    evaluasi.</p>
+                                <div class="flex gap-3">
+                                    <button type="reset"
+                                        class="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50">
+                                        Reset
+                                    </button>
+                                    <button type="submit"
+                                        class="inline-flex items-center justify-center rounded-full bg-linear-to-r from-emerald-400 to-amber-300 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-emerald-400/20 transition hover:scale-[1.02] hover:shadow-emerald-400/30">
+                                        Kirim Jawaban
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <aside
+                        class="space-y-5 self-start rounded-4xl border border-slate-200 bg-white/95 p-5 shadow-2xl shadow-slate-200/60 backdrop-blur-xl sm:p-6 lg:sticky lg:top-8">
+                        <div>
+                            <p class="text-sm font-medium text-slate-700">Ringkasan form</p>
+                            <div class="mt-4 space-y-3">
+                                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Topik</p>
+                                    <p class="mt-2 text-base font-semibold text-slate-900">Program Makan Bergizi Gratis</p>
+                                </div>
+                                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Format</p>
+                                    <p class="mt-2 text-base font-semibold text-slate-900">Pilihan ganda, checkbox, dan
+                                        isian
+                                        singkat</p>
+                                </div>
+                                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Target responden</p>
+                                    <p class="mt-2 text-base font-semibold text-slate-900">Pelajar, orang tua, dan
+                                        masyarakat
+                                        umum</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-3xl border border-emerald-200 bg-emerald-50 p-5">
+                            <p class="text-sm font-medium text-emerald-700">Tips pengisian</p>
+                            <ul class="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+                                <li>• Pilih jawaban yang paling mendekati pendapat Anda.</li>
+                                <li>• Jika belum tahu, pilih opsi yang paling aman menurut Anda.</li>
+                                <li>• Gunakan kolom saran untuk masukan yang lebih detail.</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </div>
     </section>
 
